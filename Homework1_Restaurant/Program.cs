@@ -1,3 +1,6 @@
+using Homework1_Restaurant.Services;
+using Homework1_Restaurant.Services.Implementations;
+
 namespace Homework1_Restaurant
 {
     public class Program
@@ -8,6 +11,9 @@ namespace Homework1_Restaurant
 
             // Add services to the container.
             builder.Services.AddRazorPages();
+
+            builder.Services.AddSingleton<IRestaurantService, RestaurantService>();
+            builder.Services.AddSingleton<IMenuService, MenuService>();
 
             var app = builder.Build();
 

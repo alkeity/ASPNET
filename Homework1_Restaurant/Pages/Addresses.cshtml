@@ -1,0 +1,15 @@
+﻿@page
+@model Homework1_Restaurant.Pages.AddressesModel
+@{
+}
+
+<h1>Our addresses</h1>
+
+<ol>
+	@foreach(var restaurant in Model.restaurants)
+	{
+		<li>
+			@restaurant.Address
+		</li>
+	}
+</ol>
