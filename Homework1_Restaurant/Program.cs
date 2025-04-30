@@ -1,3 +1,6 @@
+using System.Reflection;
+using Autofac;
+using Autofac.Extensions.DependencyInjection;
 using Homework1_Restaurant.Services;
 using Homework1_Restaurant.Services.Implementations;
 
@@ -12,8 +15,23 @@ namespace Homework1_Restaurant
             // Add services to the container.
             builder.Services.AddRazorPages();
 
-            builder.Services.AddSingleton<IRestaurantService, RestaurantService>();
-            builder.Services.AddSingleton<IMenuService, MenuService>();
+            //builder.Services.AddSingleton<IRestaurantService, RestaurantService>();
+            //builder.Services.AddSingleton<IMenuService, MenuService>();
+
+            // autofac
+
+            builder.Host.UseServiceProviderFactory(new AutofacServiceProviderFactory());
+
+            builder.Host.ConfigureContainer<ContainerBuilder>
+                (
+                containerBuilder =>
+                {
+                    Assembly assembly = typeof(Program).Assembly;
+                    containerBuilder.RegisterAssemblyTypes(assembly)
+                    .Where(service => service.Name.EndsWith("Service"))
+                    .AsImplementedInterfaces().InstancePerLifetimeScope();
+                }
+                );
 
             var app = builder.Build();
 
