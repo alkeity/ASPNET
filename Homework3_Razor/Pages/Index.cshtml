@@ -1,0 +1,20 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <p>Current time: @DateTime.Now.ToShortTimeString()</p>
+    <p>Full date: @DateTime.Now</p>
+    <p>Current day of year: @DateTime.Now.DayOfYear</p>
+    <p>Current weekday: @DateTime.Now.DayOfWeek</p>
+
+    @{
+        Random random = new Random();
+        int randomNum = random.Next();
+    }
+
+    <p>Random number: @randomNum</p>
+</div>
