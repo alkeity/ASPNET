@@ -1,3 +1,7 @@
+using Autofac;
+using System.Reflection;
+using Autofac.Extensions.DependencyInjection;
+
 namespace App_ToDoList
 {
     public class Program
@@ -8,6 +12,19 @@ namespace App_ToDoList
 
             // Add services to the container.
             builder.Services.AddRazorPages();
+
+            builder.Host.UseServiceProviderFactory(new AutofacServiceProviderFactory());
+
+            builder.Host.ConfigureContainer<ContainerBuilder>
+                (
+                containerBuilder =>
+                {
+                    Assembly assembly = typeof(Program).Assembly;
+                    containerBuilder.RegisterAssemblyTypes(assembly)
+                    .Where(service => service.Name.EndsWith("Service"))
+                    .AsImplementedInterfaces().InstancePerLifetimeScope();
+                }
+                );
 
             var app = builder.Build();
 

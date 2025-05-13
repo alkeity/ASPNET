@@ -1,0 +1,15 @@
+﻿@page
+@model App_ToDoList.Pages.TaskListModel
+@{
+    ViewData["Title"] = "Task List";
+}
+
+@foreach (var taskItem in Model.TaskItems)
+{
+    <div class="card mb-3">
+        <div class="card-body">
+            <h5 class="catd-title">@taskItem.Name</h5>
+            <p class="card-text">@taskItem.Description</p>
+        </div>
+    </div>
+}
