@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Homework3_Razor", "Homework
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "App_ToDoList", "App_ToDoList\App_ToDoList.csproj", "{4A6447A0-675C-4533-97EB-ABD1E0A10E15}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Homework4_Area", "Homework4_Area\Homework4_Area.csproj", "{EBA49FC9-BE61-4D18-B0B6-26DA122F2AB8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{4A6447A0-675C-4533-97EB-ABD1E0A10E15}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4A6447A0-675C-4533-97EB-ABD1E0A10E15}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4A6447A0-675C-4533-97EB-ABD1E0A10E15}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EBA49FC9-BE61-4D18-B0B6-26DA122F2AB8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EBA49FC9-BE61-4D18-B0B6-26DA122F2AB8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EBA49FC9-BE61-4D18-B0B6-26DA122F2AB8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EBA49FC9-BE61-4D18-B0B6-26DA122F2AB8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

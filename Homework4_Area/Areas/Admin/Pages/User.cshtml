@@ -1,0 +1,11 @@
+﻿@page "{id:int}/{name?}"
+@model Homework4_Area.Areas.Admin.Pages.UserModel
+@{
+}
+
+<h1>User page</h1>
+<p>Id: @Model.Id</p>
+@if (Model.Name != null)
+{
+	<p>Name: @Model.Name</p>
+}
