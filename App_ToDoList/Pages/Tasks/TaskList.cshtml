@@ -1,14 +1,16 @@
 ﻿@page
-@model App_ToDoList.Pages.TaskListModel
+@model TaskListModel
 @{
     ViewData["Title"] = "Task List";
 }
+
+<a class="btn btn-primary mb-3" asp-area="" asp-page="/Tasks/TaskEdit">+ Add New</a>
 
 @foreach (var taskItem in Model.TaskItems)
 {
     <div class="card mb-3">
         <div class="card-body">
-            <h5 class="catd-title">@taskItem.Name</h5>
+            <h5 class="card-title">@taskItem.Name</h5>
             <p class="card-text">@taskItem.Description</p>
         </div>
     </div>

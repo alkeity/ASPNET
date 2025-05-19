@@ -3,7 +3,7 @@ using App_ToDoList.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
-namespace App_ToDoList.Pages
+namespace App_ToDoList.Pages.Tasks
 {
     public class TaskListModel : PageModel
     {

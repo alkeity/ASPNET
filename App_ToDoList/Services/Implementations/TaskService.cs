@@ -5,18 +5,21 @@ namespace App_ToDoList.Services.Implementations
 {
     public class TaskService : ITaskService
     {
+        private readonly List<TaskItem> _tasks;
+
+        public TaskService()
+        {
+            _tasks = new List<TaskItem>();
+        }
+
+        public void CreateTask(string name, string description = "")
+        {
+            _tasks.Add(new TaskItem { Name = name, Description = description });
+        }
+
         public List<TaskItem> GetAllTasks()
         {
-            return new List<TaskItem>()
-            {
-                new TaskItem() { Name = "Homework", Description = "Do homework" },
-                new TaskItem() { Name = "Research", Description = "Research something" },
-                new TaskItem() { Name = "Cook", Description = "Food needed" },
-                new TaskItem() { Name = "Get your tea", Description = "I forgot to set a timer ooops" },
-                new TaskItem() { Name = "Marvelous Designer", Description = "Check how it actually works" },
-                new TaskItem() { Name = "Another task", Description = "Do something idk" },
-                new TaskItem() { Name = "Never stop being silly" }
-            };
+            return _tasks;
         }
     }
 }

@@ -1,6 +1,8 @@
 using Autofac;
 using System.Reflection;
 using Autofac.Extensions.DependencyInjection;
+using App_ToDoList.Services;
+using App_ToDoList.Services.Implementations;
 
 namespace App_ToDoList
 {
@@ -12,19 +14,20 @@ namespace App_ToDoList
 
             // Add services to the container.
             builder.Services.AddRazorPages();
+            builder.Services.AddSingleton<ITaskService, TaskService>();
 
-            builder.Host.UseServiceProviderFactory(new AutofacServiceProviderFactory());
+            //builder.Host.UseServiceProviderFactory(new AutofacServiceProviderFactory());
 
-            builder.Host.ConfigureContainer<ContainerBuilder>
-                (
-                containerBuilder =>
-                {
-                    Assembly assembly = typeof(Program).Assembly;
-                    containerBuilder.RegisterAssemblyTypes(assembly)
-                    .Where(service => service.Name.EndsWith("Service"))
-                    .AsImplementedInterfaces().InstancePerLifetimeScope();
-                }
-                );
+            //builder.Host.ConfigureContainer<ContainerBuilder>
+            //    (
+            //    containerBuilder =>
+            //    {
+            //        Assembly assembly = typeof(Program).Assembly;
+            //        containerBuilder.RegisterAssemblyTypes(assembly)
+            //        .Where(service => service.Name.EndsWith("Service"))
+            //        .AsImplementedInterfaces().InstancePerLifetimeScope();
+            //    }
+            //    );
 
             var app = builder.Build();
 
