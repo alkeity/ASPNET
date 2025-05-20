@@ -7,12 +7,12 @@
 
 <form action="" method="post">
     <div class="form-group">
-        <label for="title">Title:</label>
-        <input type="text" name="title" id="title" required>
+        <label class="mb-1" asp-for="Title">Title:</label>
+        <input class="d-block mb-2" type="text" asp-for="Title">
     </div>
     <div class="form-group">
-        <label for="description">Description:</label>
-        <input type="text" name="description" id="description">
+        <label class="mb-1" asp-for="Description">Description:</label>
+        <textarea class="d-block form-control mb-2 w-25" rows="3" asp-for="Description"></textarea>
     </div>
     <button class="btn btn-primary" type="submit">Submit</button>
 </form>
