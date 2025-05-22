@@ -1,14 +1,11 @@
-﻿@page
+﻿@page "{id:long?}"
 @model App_ToDoList.Pages.Tasks.TaskEditModel
 @{
+    string pageTitle = Model.Id != null ? "Edit task" : "New task";
+    ViewData["Title"] = pageTitle;
 }
 
-<h2>Task</h2>
-
-@* @if (Model) *@
-@* { *@
-    
-@* } *@
+<h2>@pageTitle</h2>
 
 <form action="" method="post" class="mb-3">
     <div class="form-group mb-3">

@@ -4,7 +4,7 @@
     ViewData["Title"] = "Task List";
 }
 
-<a class="btn btn-primary mb-3" asp-area="" asp-page="/Tasks/TaskEdit">+ Add New</a>
+<a class="btn btn-primary mb-3" asp-area="" asp-page="/Tasks/Task">+ Add New</a>
 
 @foreach (var taskItem in Model.TaskItems)
 {
@@ -12,6 +12,10 @@
         <div class="card-body">
             <h5 class="card-title">@taskItem.Name</h5>
             <p class="card-text">@taskItem.Description</p>
+            <div>
+                <a class="btn btn-primary mb-3" asp-area="" asp-page="/Tasks/Task" asp-route-id="@taskItem.Id">Edit</a>
+                <a class="btn btn-primary mb-3" asp-area="" asp-page="/Tasks/Task" asp-route-id="@taskItem.Id" asp-page-handler="delete">Delete</a>
+            </div>
         </div>
     </div>
 }

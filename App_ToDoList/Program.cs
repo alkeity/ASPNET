@@ -14,20 +14,8 @@ namespace App_ToDoList
 
             // Add services to the container.
             builder.Services.AddRazorPages();
-            builder.Services.AddSingleton<ITaskService, TaskServiceJson>();
-
-            //builder.Host.UseServiceProviderFactory(new AutofacServiceProviderFactory());
-
-            //builder.Host.ConfigureContainer<ContainerBuilder>
-            //    (
-            //    containerBuilder =>
-            //    {
-            //        Assembly assembly = typeof(Program).Assembly;
-            //        containerBuilder.RegisterAssemblyTypes(assembly)
-            //        .Where(service => service.Name.EndsWith("Service"))
-            //        .AsImplementedInterfaces().InstancePerLifetimeScope();
-            //    }
-            //    );
+            builder.Services.AddScoped<ITaskService, TaskServiceSimpleDB>();
+            builder.Services.AddScoped<IRecordService, RecordServiceJson>();
 
             var app = builder.Build();
 
