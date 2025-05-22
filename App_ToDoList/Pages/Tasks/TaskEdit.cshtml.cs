@@ -1,3 +1,4 @@
+using System.ComponentModel.DataAnnotations;
 using App_ToDoList.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
@@ -9,6 +10,7 @@ namespace App_ToDoList.Pages.Tasks
         private readonly ITaskService _taskService;
 
         [BindProperty]
+        [Required]
         public required string Title { get; set; }
 
         [BindProperty]
@@ -24,6 +26,7 @@ namespace App_ToDoList.Pages.Tasks
 
         public IActionResult OnPost()
         {
+            if (!ModelState.IsValid) return Page();
             _taskService.CreateTask(Title, Description);
             return RedirectToPage("TaskList");
         }

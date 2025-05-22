@@ -5,14 +5,21 @@
 
 <h2>Task</h2>
 
-<form action="" method="post">
-    <div class="form-group">
-        <label class="mb-1" asp-for="Title">Title:</label>
-        <input class="d-block mb-2" type="text" asp-for="Title">
+@* @if (Model) *@
+@* { *@
+    
+@* } *@
+
+<form action="" method="post" class="mb-3">
+    <div class="form-group mb-3">
+        <label class="form-label" asp-for="Title">Title:</label>
+        <input class="d-block w-25" type="text" asp-for="Title">
+        <span asp-validation-for="Title" class="alert-danger"></span>
     </div>
-    <div class="form-group">
-        <label class="mb-1" asp-for="Description">Description:</label>
-        <textarea class="d-block form-control mb-2 w-25" rows="3" asp-for="Description"></textarea>
+    <div class="form-group mb-3">
+        <label class="form-label" asp-for="Description">Description:</label>
+        <textarea class="d-block form-control w-25" rows="3" asp-for="Description"></textarea>
+        <span asp-validation-for="Description" class="alert-danger"></span>
     </div>
     <button class="btn btn-primary" type="submit">Submit</button>
 </form>
