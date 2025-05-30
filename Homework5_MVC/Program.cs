@@ -8,6 +8,8 @@ namespace Homework5_MVC
 
             builder.Services.AddControllersWithViews();
             builder.Services.AddScoped<Services.IGreetingService, Services.Implementations.GreetingService>();
+            builder.Services.AddScoped<Services.IRecordService, Services.Implementations.RecordServiceJson>();
+            builder.Services.AddScoped<Services.IReviewService, Services.Implementations.ReviewService>();
 
             var app = builder.Build();
 

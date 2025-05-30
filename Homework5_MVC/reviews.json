@@ -1,0 +1,51 @@
+[
+  {
+    "Id": 0,
+    "ReviewDate": "2025-05-30T03:11:11.2605149+03:00",
+    "UserName": "Anonymous",
+    "Text": "cool",
+    "Rating": 5
+  },
+  {
+    "Id": 1,
+    "ReviewDate": "2025-05-30T03:14:38.2559352+03:00",
+    "UserName": "Anone",
+    "Text": "ok",
+    "Rating": 4
+  },
+  {
+    "Id": 2,
+    "ReviewDate": "2025-05-30T03:23:35.7180888+03:00",
+    "UserName": "bruh",
+    "Text": "mid",
+    "Rating": 2
+  },
+  {
+    "Id": 3,
+    "ReviewDate": "2025-05-30T03:24:39.5686301+03:00",
+    "UserName": "bruh",
+    "Text": "mid",
+    "Rating": 3
+  },
+  {
+    "Id": 4,
+    "ReviewDate": "2025-05-30T03:25:52.3579654+03:00",
+    "UserName": "user",
+    "Text": "good review",
+    "Rating": 5
+  },
+  {
+    "Id": 5,
+    "ReviewDate": "2025-05-30T03:31:09.8597404+03:00",
+    "UserName": "Anonymous",
+    "Text": "ujkujujujuj",
+    "Rating": 5
+  },
+  {
+    "Id": 6,
+    "ReviewDate": "2025-05-30T03:31:26.3092453+03:00",
+    "UserName": "anon",
+    "Text": "review",
+    "Rating": 5
+  }
+]

@@ -14,9 +14,9 @@ namespace Homework5_MVC.Controllers
 
         [ActionName("Index")]
         [HttpGet]
-        public string IndexHttpGet()
+        public IActionResult IndexHttpGet()
         {
-            return "Hello, world!";
+            return View();
         }
 
         [HttpGet]

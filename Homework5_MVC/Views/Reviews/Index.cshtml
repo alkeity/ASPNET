@@ -1,0 +1,59 @@
+﻿@model Homework5_MVC.Models.ReviewPage
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewData["Title"] = "Reviews";
+}
+
+<h2>Reviews</h2>
+
+<div>
+    @foreach (var review in Model.Reviews)
+    {
+        <div class="card mb-3">
+            <div class="card-body">
+                <h5 class="card-text">From: @review.UserName</h5>
+                <div>
+                    @for (int i = 0; i < 5; i++)
+                    {
+                        @if (i < review.Rating)
+                        {
+                            <i class="bi bi-star-fill fs-5"></i>
+                        }
+                        else
+                        {
+                            <i class="bi bi-star fs-5"></i>
+                        }
+                    }
+                </div>
+                <p class="card-text">@review.Text</p>
+            </div>
+        </div>
+    }
+</div>
+
+<div>
+    <form action="" method="post" class="mb-3">
+        <div class="form-group mb-3">
+            <label for="@Model.NewReview.UserName" class="form-label">Your name:</label>
+            @Html.TextBoxFor(Model => Model.NewReview.UserName)
+        </div>
+        <div class="form-group mb-3">
+            <label for="@Model.NewReview.Rating" class="form-label">Your rating:</label>
+            @Html.RadioButtonFor(Model => Model.NewReview.Rating, 1)
+            1
+            @Html.RadioButtonFor(Model => Model.NewReview.Rating, 2)
+            2
+            @Html.RadioButtonFor(Model => Model.NewReview.Rating, 3)
+            3
+            @Html.RadioButtonFor(Model => Model.NewReview.Rating, 4)
+            4
+            @Html.RadioButtonFor(Model => Model.NewReview.Rating, 5)
+            5
+        </div>
+        <div class="form-group mb-3 w-50">
+            <label for="@Model.NewReview.Text" class="form-label">Your review:</label>
+            @Html.TextAreaFor(Model => Model.NewReview.Text);
+        </div>
+        <button class="btn btn-primary" type="submit">Submit</button>
+    </form>
+</div>
