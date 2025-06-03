@@ -12,6 +12,7 @@ namespace Homework5_MVC.Controllers
             _greetingService = greetingService;
         }
 
+        [Route("/")]
         [ActionName("Index")]
         [HttpGet]
         public IActionResult IndexHttpGet()
@@ -19,12 +20,14 @@ namespace Homework5_MVC.Controllers
             return View();
         }
 
+        [Route("/Welcome")]
         [HttpGet]
         public string Welcome()
         {
             return _greetingService.GetGreetingMessage();
         }
 
+        [Route("/Time")]
         [HttpGet]
         public string Time()
         {

@@ -1,4 +1,5 @@
-﻿@model Homework5_MVC.Models.ReviewPage
+﻿@using Homework5_MVC.Helpers.HTML
+@model Homework5_MVC.Models.ReviewPage
 @{
     ViewData["Title"] = "Reviews";
 }
@@ -8,52 +9,35 @@
 <div>
     @foreach (var review in Model.Reviews)
     {
-        <div class="card mb-3">
-            <div class="card-body">
-                <h5 class="card-text">From: @review.UserName</h5>
-                <div>
-                    @for (int i = 0; i < 5; i++)
-                    {
-                        @if (i < review.Rating)
-                        {
-                            <i class="bi bi-star-fill fs-5"></i>
-                        }
-                        else
-                        {
-                            <i class="bi bi-star fs-5"></i>
-                        }
-                    }
-                </div>
-                <p class="card-text">@review.Text</p>
-            </div>
-        </div>
+        @Html.CreateReview(review)
     }
 </div>
 
 <div>
-    <form action="" method="post" class="mb-3">
+    @using (Html.BeginForm("Index", "Reviews", FormMethod.Post))
+    {
         <div class="form-group mb-3">
-            <label asp-for="@Model.NewReview.UserName" class="form-label">Your name:</label>
-            @* @Html.DisplayNameFor(Model => Model.NewReview.UserName) *@
+            @Html.LabelFor(Model => Model.NewReview.UserName, "Your name:", htmlAttributes: new { @class = "form-label" })
             @Html.TextBoxFor(Model => Model.NewReview.UserName)
         </div>
         <div class="form-group mb-3">
-            <label asp-for="@Model.NewReview.Rating" class="form-label">Your rating:</label>
-            @Html.RadioButtonFor(Model => Model.NewReview.Rating, 1)
-            1
-            @Html.RadioButtonFor(Model => Model.NewReview.Rating, 2)
-            2
-            @Html.RadioButtonFor(Model => Model.NewReview.Rating, 3)
-            3
-            @Html.RadioButtonFor(Model => Model.NewReview.Rating, 4)
-            4
-            @Html.RadioButtonFor(Model => Model.NewReview.Rating, 5)
-            5
+            @* <label asp-for="@Model.NewReview.Rating" class="form-label">Your rating:</label> *@
+            @Html.LabelFor(Model => Model.NewReview.Rating, "Your rating:", htmlAttributes: new { @class = "form-label" })
+            @Html.RadioButtonFor(Model => Model.NewReview.Rating, 1, htmlAttributes: new { id = "rating1" })
+            <label for="rating1">1</label>
+            @Html.RadioButtonFor(Model => Model.NewReview.Rating, 2, htmlAttributes: new { id = "rating2" })
+            <label for="rating2">2</label>
+            @Html.RadioButtonFor(Model => Model.NewReview.Rating, 3, htmlAttributes: new { id = "rating3" })
+            <label for="rating3">3</label>
+            @Html.RadioButtonFor(Model => Model.NewReview.Rating, 4, htmlAttributes: new { id = "rating4" })
+            <label for="rating4">4</label>
+            @Html.RadioButtonFor(Model => Model.NewReview.Rating, 5, htmlAttributes: new { id = "rating5" })
+            <label for="rating5">5</label>
         </div>
         <div class="form-group mb-3 w-50">
-            <label asp-for="@Model.NewReview.Text" class="form-label">Your review:</label>
+            @Html.LabelFor(Model => Model.NewReview.Text, "Your review:", htmlAttributes: new { @class = "form-label" })
             @Html.TextAreaFor(Model => Model.NewReview.Text);
         </div>
         <button class="btn btn-primary" type="submit">Submit</button>
-    </form>
+    }
 </div>

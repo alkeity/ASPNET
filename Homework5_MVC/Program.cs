@@ -13,7 +13,8 @@ namespace Homework5_MVC
 
             var app = builder.Build();
 
-            app.MapControllerRoute("default", "{controller=Home}/{action=Index}/{id?}");
+            //app.MapControllerRoute("default", "{controller=Home}/{action=Index}/{id?}");
+            app.MapControllers();
 
             app.Run();
         }
