@@ -1,4 +1,9 @@
 
+using Homework7_WebAPI.Data;
+using Homework7_WebAPI.Services;
+using Homework7_WebAPI.Services.Implementations;
+using Microsoft.EntityFrameworkCore;
+
 namespace Homework7_WebAPI
 {
     public class Program
@@ -13,6 +18,19 @@ namespace Homework7_WebAPI
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
+
+            builder.Services.AddScoped<IStorageService, StorageService>();
+
+            builder.Services.AddDbContext<AppDbContext>
+                (
+                options =>
+                {
+                    string? connectionString = builder.Configuration.GetConnectionString("Default");
+                    if (connectionString == null) throw new MissingFieldException("Failed to get connection string.");
+
+                    options.UseSqlServer(connectionString);
+                }
+                );
 
             var app = builder.Build();
 
