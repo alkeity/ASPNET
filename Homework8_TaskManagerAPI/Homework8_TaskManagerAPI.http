@@ -1,0 +1,6 @@
+@Homework8_TaskManagerAPI_HostAddress = http://localhost:5090
+
+GET {{Homework8_TaskManagerAPI_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
