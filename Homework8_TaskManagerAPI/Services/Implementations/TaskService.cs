@@ -1,6 +1,8 @@
-﻿using Homework8_TaskManagerAPI.Data;
+﻿using System.Threading.Tasks;
+using Homework8_TaskManagerAPI.Data;
 using Homework8_TaskManagerAPI.Data.Models;
 using Homework8_TaskManagerAPI.Models.DTO;
+using Microsoft.EntityFrameworkCore;
 
 namespace Homework8_TaskManagerAPI.Services.Implementations
 {
@@ -12,9 +14,22 @@ namespace Homework8_TaskManagerAPI.Services.Implementations
         {
             _db = db;
         }
-        public void AddTask(TaskDTO task)
+        public long AddTask(TaskDTO task)
         {
-            _db.TaskItems.Add(FromDTO(task));
+            TaskItem newTask = FromDTO(task);
+            _db.TaskItems.Add(newTask);
+            _db.SaveChanges();
+            return newTask.ID;
+        }
+
+        public void DeleteTask(long id)
+        {
+            _db.TaskItems.Where(task => task.ID == id).ExecuteDelete();
+        }
+
+        public TaskItem? GetTaskItem(long id)
+        {
+            return _db.TaskItems.FirstOrDefault(task => task.ID == id);
         }
 
         public List<TaskItem> GetTaskItems()

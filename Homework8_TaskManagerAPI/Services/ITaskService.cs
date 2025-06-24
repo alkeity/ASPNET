@@ -5,7 +5,11 @@ namespace Homework8_TaskManagerAPI.Services
 {
     public interface ITaskService
     {
-        void AddTask(TaskDTO task);
+        long AddTask(TaskDTO task);
+
+        void DeleteTask(long id);
         List<TaskItem> GetTaskItems();
+
+        TaskItem? GetTaskItem(long id);
     }
 }
