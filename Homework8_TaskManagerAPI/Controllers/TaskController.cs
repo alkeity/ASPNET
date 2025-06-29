@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Homework8_TaskManagerAPI.Controllers
 {
-    [Route("[controller]")]
+    [Route("v1/tasks")]
     [ApiController]
     public class TaskController : ControllerBase
     {
@@ -20,8 +20,14 @@ namespace Homework8_TaskManagerAPI.Controllers
         }
 
         [HttpGet]
-        [Route("Get/{id:long}")]
-        public ActionResult<TaskDTO> Get(long id)
+        public ActionResult<List<TaskItem>> GetTasks()
+        {
+            return _taskService.GetTaskItems();
+        }
+
+        [HttpGet]
+        [Route("{id:long}")]
+        public ActionResult<TaskDTO> GetTask([FromRoute] long id)
         {
             try
             {
@@ -42,7 +48,7 @@ namespace Homework8_TaskManagerAPI.Controllers
             try
             {
                 long id = _taskService.AddTask(task);
-                return CreatedAtAction(nameof(Get), new { id }, task);
+                return CreatedAtAction(nameof(GetTask), new { id }, task);
             }
             catch (Exception) // stub
             {
@@ -51,8 +57,8 @@ namespace Homework8_TaskManagerAPI.Controllers
         }
 
         [HttpDelete]
-        [Route("Delete")]
-        public IActionResult DeleteTask(long id)
+        [Route("{id:long}")]
+        public IActionResult DeleteTask([FromRoute] long id)
         {
             try
             {

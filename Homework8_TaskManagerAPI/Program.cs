@@ -1,5 +1,6 @@
 
 using Homework8_TaskManagerAPI.Data;
+using Homework8_TaskManagerAPI.Middleware;
 using Homework8_TaskManagerAPI.Services;
 using Homework8_TaskManagerAPI.Services.Implementations;
 using Microsoft.EntityFrameworkCore;
@@ -42,6 +43,8 @@ namespace Homework8_TaskManagerAPI
             });
 
             var app = builder.Build();
+
+            app.UseMiddleware<RequestTimeMiddleware>();
 
             // Configure the HTTP request pipeline.
             if (app.Environment.IsDevelopment())
